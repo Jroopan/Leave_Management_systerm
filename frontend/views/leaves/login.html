@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            box-sizing: border-box;
+        }
+
+        p {
+            color: #ffffff;
+            position: right;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+
+            height: 100vh;
+            position: relative;
+            background-image: url('../../static/css/leave.jpg');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+        }
+
+        /* Overlay to reduce the background image opacity */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(19, 17, 17, 0.911);
+            /* Adjust overlay color and opacity */
+            z-index: 1;
+        }
+
+        .stroked-text {
+            color: #ffffff;
+            /* Inner text color */
+            -webkit-text-stroke: 1px #060054;
+            /* Stroke width and color */
+        }
+
+        /* Content inside the body */
+        body * {
+            position: relative;
+            z-index: 2;
+            /* Ensures content sits above the overlay */
+        }
+
+
+
+        .container {
+            z-index: 1;
+            position: relative;
+            padding: 20px;
+            top: 220px;
+            left: 700px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            background-color: #ffffff;
+            width: 550px;
+        }
+
+        h4 {
+            font-size: 2em;
+            color: #060054;
+            font-weight: bold;
+            text-align: center;
+            font-family: Times New Roman;
+        }
+
+        .input-box {
+            position: relative;
+            margin: 25px 0;
+            color: #ffffff;
+        }
+
+        .input-box input {
+            width: 100%;
+            height: 50px;
+            background: transparent;
+            border: 2px solid #003366;
+            outline: none;
+            border-radius: 40px;
+            font-size: 1em;
+            color: #1f0101;
+            padding: 0 20px;
+            transition: 0.1s;
+        }
+
+        .input-box input:focus,
+        .input-box input:valid {
+            border-color: #00aaff;
+        }
+
+        h1 {
+            font-size: 3em;
+
+            font-family: Times New Roman;
+        }
+
+        .input-box label {
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            font-size: 16px;
+            color: #da0000;
+            pointer-events: none;
+            transition: 0.1s ease;
+        }
+
+        .input-box input:focus~label,
+        .input-box input:valid~label {
+            top: 1px;
+            font-size: 15px;
+            background-color: #060054;
+            padding: 0 6px;
+            color: #ffffff;
+        }
+
+        .btn {
+            width: 100%;
+            height: 45px;
+            border-radius: 45px;
+            background: #060054;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 1em;
+            color: white;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background-color: #003366;
+        }
+
+
+
+        @media (max-width: 500px) {
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="stroked-text" style="position: absolute; right: 570px; top: 90px; color: rgb(245, 245, 245); ">
+        Employee Leave Management System</h1>
+
+    <div class="container">
+
+        <h4>Login Here</h4>
+        <form id="loginForm" class="form" style="width: 500px;">
+            <div class="input-box">
+                <input type="text" id="username" name="username" required>
+                <label for="username">User Name</label>
+            </div>
+            <div class="input-box">
+                <input type="password" id="password" name="password" required>
+                <label for="password">Password</label>
+            </div>
+
+            <button type="submit" class="btn">Login</button>
+        </form>
+
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const userName = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch(`http://localhost:3000/users`);
+
+                const users = await response.json();
+                console.log(users);
+                let loggedinUser = users.find(u => u.username == userName && u.password == password);
+
+                if (users.length > 0) {
+                    const employee = loggedinUser;
+
+                    if (employee) {
+                        const loggedInUser = {
+                            username: employee.username,
+                            employeeId: employee.employeeId,
+                            firstName: employee.firstName,
+                            lastName: employee.lastName,
+                            role: employee.role
+                        };
+
+                        localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+
+                        if (loggedinUser.role == "Admin") {
+                            window.location.href = '/admin';
+                            alert('Login successful!');
+                        } else if (loggedinUser.role == "Employee") {
+                            window.location.href = '/employee';
+                        } else if (loggedinUser.role == "Manager") {
+                            window.location.href = '/manager';
+                            alert('Login successful!');
+                        }
+                    } else {
+                        alert('Employee data not found.');
+                    }
+                } else {
+                    alert('Invalid username or password.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred while logging in.');
+            }
+        });
+    </script>
+</body>
+
+</html>

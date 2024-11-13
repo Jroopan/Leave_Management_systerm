@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Request</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+            color: #000000;
+        }
+
+        .main-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 40px;
+            width: 100%;
+           
+        }
+
+      
+
+
+
+        .container {
+            width: 100%;
+            height: auto;
+        }
+
+        .container-01 {
+            height: auto;
+            padding: 10px;
+        }
+
+        
+        .logout-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: lightseagreen;
+            width: 1700px;
+            padding: 5px 80px;
+            border-radius: 5px;
+        }
+
+        #logoutButton {
+            padding: 10px 20px;
+            background: linear-gradient(145deg, #ff3d3d, #ff1e1e);
+            color: #fff;
+            border-radius: 12px;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            /* transition: background 0.3s; */
+        }
+
+        #logoutButton:hover {
+            background: linear-gradient(145deg, #ff5a5a, #ff2d2d);
+        }
+
+        h1 {
+            color: #f0e7ff;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .icon {
+            text-align: center;
+            font-size: 3rem;
+            color: #edd3f8;
+            margin-bottom: 15px;
+        }
+
+
+
+
+
+        .input-box input:focus {
+            border-color: #fc2c2c;
+        }
+
+        .btn {
+            padding: 10px;
+            width: 100px;
+            border-radius: 12px;
+            border: none;
+            background-color: green;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn:hover {
+            background-color: darkgreen;
+            padding: 20px 10px;
+        }
+
+        .leave-list {
+            margin-top: 20px;
+        }
+
+        .leave-list li {
+            background: linear-gradient(145deg, #29283a, #1d1c2b);
+            color: #f0e7ff;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+
+        .leave-list li:hover {
+            transform: translateY(-3px);
+        }
+
+        .status3 {
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #d1c8e1;
+        }
+
+        .status.pending {
+            color: #ffc107;
+        }
+
+        .status.approved {
+            color: #28a745;
+        }
+
+        .status.rejected {
+            color: #f8051e;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                padding: 0 15px;
+            }
+
+            .container,
+            .container-01 {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+
+        #leaveCount,
+        #acceptedleaveCount,
+        #rejectedleaveCount {
+            color: rgb(5, 1, 32);
+            font-weight: bold;
+            font-size: 25px;
+        }
+
+        #acceptedleaveCount {
+            color: darkgreen;
+        }
+
+        #rejectedleaveCount {
+            color: red;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 80px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 500px;
+            height: 500px;
+            color: #030000;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+
+        }
+
+        .close {
+            color: #030000;
+            float: right;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #ff0000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #leaveRequestForm label {
+            font-weight: bold;
+            color: #000231;
+            font-size: 18px;
+        }
+
+        #leaveRequestForm input[type="text"],
+        #leaveRequestForm input[type="number"],
+        #leaveRequestForm input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #555;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #ffffff;
+            color: #1c1616;
+        }
+
+        #leaveRequestForm button[type="submit"] {
+            background-color: #4c9f70;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #leaveRequestForm button[type="submit"]:hover {
+            background-color: #3e875b;
+        }
+
+        .formContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #title {
+            color: darkgreen;
+        }
+
+        #addLeaveRequestBtn {
+            padding: 20px;
+            background-color: darkgreen;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            margin-left: 100px;
+            margin-bottom: 20px;
+        }
+
+        /* Container for leave items */
+        .leave-list {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            padding: 20px;
+            margin: 0;
+            list-style-type: none;
+        }
+
+        /* Individual leave item styling */
+        .leave-item {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .leave-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .status3 div {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        /* Specific status styling */
+        .status.approved {
+            color: green;
+            font-weight: bold;
+        }
+
+        .status.pending {
+            color: orange;
+            font-weight: bold;
+        }
+
+        .status.rejected {
+            color: red;
+            font-weight: bold;
+        }
+        #leaveRequests{
+            padding: 10px 100px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="mainModal">
+        <div id="requestModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h1 id="title">Submit Your Leave Request</h1>
+                <div class="formContainer">
+                    <form id="leaveRequestForm" class="form">
+                        <div class="input-box">
+                            <label for="reason">Reason For Leave</label>
+                            <input type="text" id="reason" name="reason" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="dateFrom">Leave Date From</label>
+                            <input type="date" id="dateFrom" name="dateFrom" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="numOfDays">Number Of Days</label>
+                            <input type="number" id="numOfDays" name="numOfDays" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="applicationDate">Application Date</label>
+                            <input type="date" id="applicationDate" name="applicationDate" required>
+                        </div>
+                        <button type="submit" class="btn">Submit</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="container-01">
+        <div class="logout-container">
+            <div>
+                <p id="leaveCount"></p>
+                <p id="acceptedleaveCount"></p>
+                <p id="rejectedleaveCount"></p>
+
+            </div>
+
+            <button id="logoutButton">Log Out</button>
+
+        </div>
+        <h1 id="title" style="text-align: center;">Your Leave Requests</h1>
+        <button id="addLeaveRequestBtn">New Leave Request</button>
+
+        <ul id="leaveRequests" class="leave-list"></ul>
+    </div>
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async function () {
+            const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+            const requestModal = document.getElementById("requestModal");
+
+
+            if (!loggedInUser) {
+                alert('You must log in first!');
+                window.location.href = 'login.html';
+                return;
+            }
+            console.log(loggedInUser);
+
+            if (loggedInUser.role == 'Admin') {
+                window.location.href = 'managerLeaveRequest.html';
+            }
+
+
+            const welcomeMessage = document.getElementById('welcomeMessage');
+            // welcomeMessage.textContent = `Welcome Back,${loggedInUser.employeeId} `;
+
+
+
+
+            const leaveRequestForm = document.getElementById('leaveRequestForm');
+            const leaveRequestsList = document.getElementById('leaveRequests');
+
+            document.getElementById("addLeaveRequestBtn").onclick = () => {
+                requestModal.style.display = "block";
+
+                document.querySelectorAll(".close").forEach(btn => {
+                    btn.onclick = () => {
+                        requestModal.style.display = "none";
+                    };
+                });
+
+
+                leaveRequestForm.addEventListener('submit', async function (event) {
+                    event.preventDefault();
+
+                    const reason = document.getElementById('reason').value;
+                    const dateFrom = document.getElementById('dateFrom').value;
+                    const numOfDays = document.getElementById('numOfDays').value;
+                    const applicationDate = document.getElementById('applicationDate').value;
+
+
+                    if (new Date(applicationDate) >= new Date(dateFrom)) {
+                        alert('Application date must be earlier than the leave start date.');
+                        return;
+                    }
+
+                    const newLeaveRequest = {
+                        employeeId: loggedInUser.employeeId,
+                        reason,
+                        dateFrom,
+                        numOfDays,
+                        applicationDate,
+                        status: 'Pending'
+                    };
+
+                    try {
+                        const response = await fetch('http://localhost:3000/leaveRequests', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(newLeaveRequest)
+                        });
+
+                        if (response.ok) {
+                            alert('Leave request submitted successfully!');
+                            leaveRequestForm.reset();
+                            loadLeaveRequests(loggedInUser.employeeId);
+                        } else {
+                            alert('Failed to submit leave request.');
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert('An error occurred while submitting the leave request.');
+                    }
+                });
+            };
+
+            async function loadLeaveRequests(employeeId) {
+                try {
+                    const response = await fetch(`http://localhost:3000/leaveRequests?employeeId=${employeeId}`);
+                    const leaveRequests = await response.json();
+
+                    let leaveCount = document.getElementById("leaveCount");
+                    let acceptedleaveCount = document.getElementById("acceptedleaveCount");
+                    let rejectedleaveCount = document.getElementById("rejectedleaveCount");
+
+                    let acceptedReq = leaveRequests.filter(r => r.status == "Approved");
+                    let rejectedReq = leaveRequests.filter(r => r.status == "Rejected");
+
+                    leaveCount.innerHTML = `Total Request: ${leaveRequests.length}`;
+                    acceptedleaveCount.innerHTML = `Approved: ${acceptedReq.length}`;
+                    rejectedleaveCount.innerHTML = `Rejected: ${rejectedReq.length}`;
+
+                    leaveRequestsList.innerHTML = '';
+                    const leaveList = document.querySelector('.leave-list');
+                    leaveRequests.forEach(request => {
+                        const li = document.createElement('li');
+                        li.classList.add('leave-item');
+                        li.innerHTML = `
+        <div class="status3">
+            <div><strong>Reason:</strong> ${request.reason}</div>
+            <div><strong>From:</strong> ${request.dateFrom}</div>
+            <div><strong>Days:</strong> ${request.numOfDays}</div>
+            <div><strong>Applied on:</strong> ${request.applicationDate}</div>
+            <div><strong>Status:</strong> <span class="status ${request.status.toLowerCase()}">${request.status}</span></div>
+        </div>
+    `;
+                        leaveList.appendChild(li);
+                    });
+
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            }
+
+            loadLeaveRequests(loggedInUser.employeeId);
+        });
+
+    </script>
+</body>
+
+</html>
