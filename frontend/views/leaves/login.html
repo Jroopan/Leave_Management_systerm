@@ -90,14 +90,13 @@
 
         .input-box input {
             width: 100%;
-            height: 50px;
             background: transparent;
             border: 2px solid #003366;
             outline: none;
             border-radius: 40px;
-            font-size: 1em;
+            font-size: 22px;
             color: #1f0101;
-            padding: 0 20px;
+            padding: 20px 20px;
             transition: 0.1s;
         }
 
@@ -117,7 +116,7 @@
             top: 50%;
             left: 20px;
             transform: translateY(-50%);
-            font-size: 16px;
+            font-size: 20px;
             color: #da0000;
             pointer-events: none;
             transition: 0.1s ease;
@@ -126,7 +125,7 @@
         .input-box input:focus~label,
         .input-box input:valid~label {
             top: 1px;
-            font-size: 15px;
+            font-size: 18px;
             background-color: #060054;
             padding: 0 6px;
             color: #ffffff;
@@ -134,13 +133,13 @@
 
         .btn {
             width: 100%;
-            height: 45px;
+            padding: 10px;
             border-radius: 45px;
             background: #060054;
             border: none;
             outline: none;
             cursor: pointer;
-            font-size: 1em;
+            font-size: 22px;
             color: white;
             font-weight: 600;
         }
@@ -193,28 +192,34 @@
                 const response = await fetch(`http://localhost:3000/users`);
 
                 const users = await response.json();
+
+                const employeeResponse = await fetch(`http://localhost:3000/employees`);
+
+                const employees = await employeeResponse.json();
                 console.log(users);
                 let loggedinUser = users.find(u => u.username == userName && u.password == password);
 
                 if (users.length > 0) {
-                    const employee = loggedinUser;
+                    const loggedInEmployee = employees.filter(e => e.id == loggedinUser.employeeId)
+                    const employee = loggedInEmployee;
 
                     if (employee) {
-                        const loggedInUser = {
+                        const loggedInuser = {
                             username: employee.username,
                             employeeId: employee.employeeId,
                             firstName: employee.firstName,
                             lastName: employee.lastName,
                             role: employee.role
                         };
-
-                        localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+                        // const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+                        localStorage.setItem('loggedInUser', JSON.stringify(employee));
 
                         if (loggedinUser.role == "Admin") {
                             window.location.href = '/admin';
                             alert('Login successful!');
                         } else if (loggedinUser.role == "Employee") {
                             window.location.href = '/employee';
+                            alert('Login successful!');
                         } else if (loggedinUser.role == "Manager") {
                             window.location.href = '/manager';
                             alert('Login successful!');

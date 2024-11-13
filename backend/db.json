@@ -19,13 +19,22 @@
       "doj": "2024-11-10"
     },
     {
-      "id": "EMP_Ss8Nx",
-      "employeeId": "EMP_Ss8Nx",
+      "id": "EMP_qB9C6",
+      "employeeId": "EMP_qB9C6",
       "nic": "851324251v",
-      "firstName": "rojan",
-      "lastName": "bala",
-      "dob": "2023-07-10",
-      "doj": "2024-11-13"
+      "firstName": "soman",
+      "lastName": "kanthaiya",
+      "dob": "2024-10-27",
+      "doj": "2024-10-27"
+    },
+    {
+      "id": "EMP_eqktP",
+      "employeeId": "EMP_eqktP",
+      "nic": "851324251v",
+      "firstName": "Jerobert",
+      "lastName": "Zachariah ",
+      "dob": "1993-02-14",
+      "doj": "2024-11-04"
     }
   ],
   "users": [
@@ -51,25 +60,21 @@
       "id": "EMP_d3MnY"
     },
     {
-      "id": "EMP_Ss8Nx",
-      "employeeId": "EMP_Ss8Nx",
-      "username": "EMP_Ss8Nx",
+      "id": "EMP_qB9C6",
+      "employeeId": "EMP_qB9C6",
+      "username": "EMP_qB9C6",
+      "password": "pwd123",
+      "role": "Employee"
+    },
+    {
+      "id": "EMP_eqktP",
+      "employeeId": "EMP_eqktP",
+      "username": "EMP_eqktP",
       "password": "pwd123",
       "role": "Employee"
     }
   ],
   "leaveRequests": [
-    {
-      "id": "a86b",
-      "reason": "party",
-      "employeeId": null,
-      "dateFrom": "2024-09-17",
-      "numOfDays": "1",
-      "applicationDate": "2024-09-06",
-      "status": "Rejected",
-      "processedDate": "2024-09-05",
-      "rejectionReason": "cant allow"
-    },
     {
       "id": "2ecb",
       "employeeId": null,
@@ -216,6 +221,69 @@
       "dateFrom": "2024-11-15",
       "numOfDays": "4",
       "applicationDate": "2024-11-12",
+      "status": "Pending"
+    },
+    {
+      "id": "818d",
+      "employeeId": "EMP_eqktP",
+      "reason": "sick",
+      "dateFrom": "2024-11-21",
+      "numOfDays": "2",
+      "applicationDate": "2024-11-13",
+      "status": "Pending"
+    },
+    {
+      "id": "43bb",
+      "employeeId": "EMP_eqktP",
+      "reason": "sick",
+      "dateFrom": "2024-11-27",
+      "numOfDays": "3",
+      "applicationDate": "2024-11-13",
+      "status": "Pending"
+    },
+    {
+      "id": "0f10",
+      "employeeId": "EMP_eqktP",
+      "reason": "Function",
+      "dateFrom": "2024-11-21",
+      "numOfDays": "3",
+      "applicationDate": "2024-11-13",
+      "status": "Pending"
+    },
+    {
+      "id": "9691",
+      "employeeId": "EMP_eqktP",
+      "reason": "Function",
+      "dateFrom": "2024-11-21",
+      "numOfDays": "3",
+      "applicationDate": "2024-11-13",
+      "status": "Pending"
+    },
+    {
+      "id": "26fb",
+      "employeeId": "EMP_eqktP",
+      "reason": "Party",
+      "dateFrom": "2024-11-29",
+      "numOfDays": "6",
+      "applicationDate": "2024-11-13",
+      "status": "Pending"
+    },
+    {
+      "id": "5e26",
+      "employeeId": "EMP_eqktP",
+      "reason": "Festival",
+      "dateFrom": "2024-11-30",
+      "numOfDays": "2",
+      "applicationDate": "2024-11-13",
+      "status": "Pending"
+    },
+    {
+      "id": "ed20",
+      "employeeId": "EMP_eqktP",
+      "reason": "Festival",
+      "dateFrom": "2024-11-30",
+      "numOfDays": "2",
+      "applicationDate": "2024-11-13",
       "status": "Pending"
     }
   ]
