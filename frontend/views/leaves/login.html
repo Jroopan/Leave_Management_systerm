@@ -201,7 +201,9 @@
                 console.log(loggedinUser)
 
                 if (users.length > 0) {
-                    const loggedInEmployee = employees.filter(e => e.id == loggedinUser.employeeId)
+                    const loggedInEmployee = employees.find(e => e.id === loggedinUser.employeeId);
+
+                    console.log(employees)
                     console.log(loggedInEmployee)
                     const employee = loggedInEmployee;
 
@@ -220,7 +222,7 @@
                             window.location.href = '/admin';
                             alert('Login successful!');
                         } else if (loggedinUser.role == "Employee") {
-                            window.location.href = '/employee';
+                           window.location.href = '/employee';
                             alert('Login successful!');
                         } else if (loggedinUser.role == "Manager") {
                             window.location.href = '/manager';

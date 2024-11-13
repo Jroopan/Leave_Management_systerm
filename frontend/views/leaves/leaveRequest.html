@@ -408,20 +408,18 @@
     <script>
         document.addEventListener('DOMContentLoaded', async function () {
             const LocalloggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
-            const loggedInUser = LocalloggedInUser[0]
+            const loggedInUser = LocalloggedInUser[0] || LocalloggedInUser
             const requestModal = document.getElementById("requestModal");
 
 
-            if (!loggedInUser) {
+            if (!LocalloggedInUser) {
                 alert('You must log in first!');
                 window.location.href = '/login';
                 return;
             }
-            console.log(loggedInUser);
+            console.log(LocalloggedInUser);
 
-            if (loggedInUser.role == 'Admin') {
-                window.location.href = 'managerLeaveRequest.html';
-            }
+          
 
 
             const welcomeMessage = document.getElementById('welcomeMessage');
