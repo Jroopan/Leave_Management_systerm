@@ -1,0 +1,688 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+    .container {
+        max-width: 2400px;
+        height: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        color: #010c48;
+        font-family: Arial, sans-serif;
+        background-color: rgb(238, 238, 238);
+        animation: colorChange 3s infinite alternate;
+    }
+
+    /* @keyframes colorChange {
+        0% {
+            background-color: #2a2e37;
+            /
+        }
+
+        50% {
+            background-color: #3c4456;
+
+        }
+
+        100% {
+            background-color: #5a6a8f;
+
+        }
+    } */
+
+    #logoutButton {
+        padding: 8px 20px;
+        border: none;
+        background: #e63946;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        transition: background-color 0.3s;
+    }
+
+    #logoutButton:hover {
+        background: #c53030;
+    }
+
+    .flex-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    h1 {
+        text-align: center;
+
+        font-family: 'Georgia', serif;
+        font-size: 32px;
+    }
+
+    #searchInput {
+        width: 25%;
+        padding: 20px 12px;
+        border: 1px solid #555;
+        border-radius: 8px;
+        font-size: 1rem;
+        background-color: #e4e4e5;
+        color: #212020;
+        margin-bottom: 20px;
+    }
+
+    .EmployeeHeader {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 50px;
+        margin-bottom: 30px;
+    }
+
+    #employeeTable {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 18px;
+        color: #ffffff;
+
+        font-family: Arial, sans-serif;
+    }
+
+    #employeeTable th,
+    #employeeTable td {
+        border: 1px solid #444;
+        padding: 10px;
+        text-align: center;
+    }
+
+    #employeeTable th {
+        background-color: #3b3f47;
+        color: #d3d3d3;
+        font-weight: bold;
+    }
+
+    #employeeTable tr {
+        background-color: whitesmoke;
+        color: #010c48;
+    }
+
+    #employeeTable tr:hover {
+        background-color: #acacb5;
+        color: white;
+    }
+
+    button {
+        padding: 10px 16px;
+        border: none;
+        border-radius: 4px;
+        background-color: #4c9f70;
+        color: white;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+
+
+    button:hover {
+        background-color: #3e875b;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 80px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border-radius: 8px;
+        width: 500px;
+        height: fit-content;
+        color: #030000;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+
+    }
+
+    .close {
+        color: #030000;
+        float: right;
+        font-size: 40px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #ff0000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    #employeeForm label {
+        font-weight: bold;
+        color: #000231;
+        font-size: 18px;
+    }
+
+    #employeeForm input[type="text"],
+    #credentialsForm input[type="text"],
+    #credentialsForm input[type="date"],
+    #employeeForm input[type="date"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #555;
+        border-radius: 5px;
+        font-size: 16px;
+        background-color: #ffffff;
+        color: #1c1616;
+    }
+
+
+    #employeeForm button[type="submit"],
+    #credentialsForm button[type="submit"] {
+        background-color: #4c9f70;
+        color: white;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        margin-top: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    #employeeForm button[type="submit"]:hover {
+        background-color: #3e875b;
+    }
+
+    #deleteBtn,
+    #editCredentialsBtn,
+    #editBtn {
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+    }
+
+    #deleteBtn {
+        background-color: red;
+    }
+
+    #editBtn {
+        background-color: green;
+        margin-right: 20px;
+    }
+
+    #editCredentialsBtn {
+        background-color: blue;
+
+    }
+
+    #createEmployeeBtn {
+        padding: 10px;
+    }
+
+    .formContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #modalTitle {
+        color: green;
+    }
+
+    #btnDiv {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    #userrole {
+        padding: 10px;
+    }
+</style>
+
+
+<div class="container">
+    <div class="flex-container">
+        <h1>Employee Management System </h1>
+
+
+        <button id="logoutButton" class="btn-logout">Log out</button>
+    </div>
+
+    <div class="EmployeeHeader">
+        <button id="createEmployeeBtn">Add Employee </button>
+        <input type="text" id="searchInput" placeholder="Search By   NIC , First Name , Last Name"
+            style="margin-top: 10px;">
+
+    </div>
+
+
+
+    <table id="employeeTable">
+        <thead>
+            <tr>
+                <th>EMP ID</th>
+                <th>NIC</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date of Birth</th>
+                <th>Date of Joining</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="employeeTableBody"></tbody>
+    </table>
+    <br>
+    <div id="toast"></div>
+    <div class="mainModal">
+        <div id="employeeModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="modalTitle">Add Employee </h2>
+                <div class="formContainer">
+                    <form id="employeeForm">
+                        <table>
+                            <tr>
+                                <td>
+                                    <input type="hidden" id="empId" name="empId">
+                                </td>
+                            </tr>
+                            <tr>
+                                <div>
+                                    <td><label for="nic">NIC Number</label></td>
+                                    <td><input type="text" id="nic" name="nic" required></td>
+                                </div>
+                            </tr>
+                            <tr>
+                                <div>
+                                    <td><label for="firstName">First Name</label></td>
+                                    <td><input type="text" id="firstName" name="firstName" required></td>
+                                </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <div>
+                                    <td><label for="lastName">Last Name</label></td>
+                                    <td><input type="text" id="lastName" name="lastName" required></td>
+                                </div>
+                            </tr>
+                            <tr>
+                                <div>
+                                    <td><label for="dob">Date of Birth</label></td>
+                                    <td><input type="date" id="dob" name="dob" required></td>
+                                </div>
+                            </tr>
+                            <tr>
+                                <div>
+                                    <td><label for="doj">Date Of Joining</label></td>
+                                    <td><input type="date" id="doj" name="doj" required></td>
+                                </div>
+                            </tr>
+                            <tr>
+                                <td><button type="submit" id="saveButton">Save</button></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="credentialsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p class="p">Edit Credentials</p>
+            <form id="credentialsForm">
+                <table>
+
+                    <input type="hidden" id="credentialsEmpId" name="empId">
+                    <tr>
+                        <div>
+                            <td><label for="username">Username</label></td>
+                            <td><input type="text" id="username" name="username" disabled required></td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div>
+                            <td><label for="password">Password</label></td>
+                            <td><input type="text" id="password" name="password" required></td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div>
+                            <td><label for="userrole">Role</label></td>
+                            <td><select id="userrole" name="userrole">
+                                    <option value="Employee">Employee</option>
+                                    <option value="Manager">Manager</option>
+                                    <option value="Admin">Admin</option>
+                                </select></td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <td><button type="submit">Save Credentials</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+
+
+
+    document.addEventListener("DOMContentLoaded", async () => {
+
+
+        const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+        if (!loggedInUser) {
+            alert('You must log in first!');
+            window.location.href = 'login.html';
+            return;
+        }
+        console.log(loggedInUser);
+
+        const apiUrl = "http://localhost:3000/employees";
+        const userApiUrl = "http://localhost:3000/users";
+
+        let employees = [];
+        let users = [];
+        let editingEmployeeId = null;
+        const employeeTableBody = document.getElementById("employeeTableBody");
+        const employeeModal = document.getElementById("employeeModal");
+        const credentialsModal = document.getElementById("credentialsModal");
+        const employeeForm = document.forms['employeeForm'];
+        const credentialsForm = document.forms['credentialsForm'];
+        const toast = document.getElementById("toast");
+
+        const fetchEmployees = async () => {
+            const response = await fetch(apiUrl);
+            employees = await response.json();
+            renderEmployees();
+        };
+
+        const fetchUsers = async () => {
+            const response = await fetch(userApiUrl);
+            users = await response.json();
+        };
+
+        const renderEmployees = () => {
+            employeeTableBody.innerHTML = "";
+            employees.forEach((employee) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+        <td>${employee.employeeId}</td>
+        <td>${employee.nic}</td>
+        <td>${employee.firstName}</td>
+        <td>${employee.lastName}</td>
+        <td>${employee.dob}</td>
+        <td>${employee.doj}</td>
+        <td>
+            <div id="btnDiv">
+                <div>
+                    <button id="editBtn" onclick="editEmployee('${employee.employeeId}')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                        </svg>
+                    </button>
+                    <button id="deleteBtn" onclick="deleteEmployee('${employee.employeeId}')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
+                        </svg>
+                    </button>
+                </div>
+                    
+                    <button id="editCredentialsBtn" onclick="editCredentials('${employee.employeeId}')">         
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                        </svg> 
+                        Credentials
+                    </button>
+            </div>
+        </td>`;
+
+                employeeTableBody.appendChild(row);
+            });
+        };
+
+        document.getElementById("createEmployeeBtn").onclick = () => {
+            openEmployeeModal();
+        };
+        const openEmployeeModal = (employee = null) => {
+            employeeModal.style.display = "block";
+            const modalTitle = document.getElementById("modalTitle");
+            const saveButton = document.getElementById("saveButton");
+            if (employee) {
+                modalTitle.innerText = "Edit Employee";
+                saveButton.innerText = "Update";
+                employeeForm.nic.value = employee.nic;
+                employeeForm.firstName.value = employee.firstName;
+                employeeForm.lastName.value = employee.lastName;
+                employeeForm.dob.value = employee.dob;
+                employeeForm.doj.value = employee.doj;
+                editingEmployeeId = employee.employeeId;
+            } else {
+                employeeForm.reset();
+                modalTitle.innerText = "Add Employee";
+                saveButton.innerText = "Save";
+                editingEmployeeId = null;
+            }
+        };
+
+        document.querySelectorAll(".close").forEach(btn => {
+            btn.onclick = () => {
+                employeeModal.style.display = "none";
+                credentialsModal.style.display = "none";
+            };
+        });
+
+        const generateEmpId = () => {
+            const characters =
+                'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let empId;
+            do {
+                empId = 'EMP_' + Array.from({ length: 5 }, () =>
+                    characters.charAt(Math.floor(Math.random() * characters.length))).join('');
+            } while (employees.some(emp => emp.empId === empId));
+            return empId;
+        };
+
+        employeeForm.onsubmit = async (e) => {
+            e.preventDefault();
+            const empId = editingEmployeeId || generateEmpId();
+            const nic = employeeForm.nic.value;
+            const firstName = employeeForm.firstName.value;
+            const lastName = employeeForm.lastName.value;
+            const dob = employeeForm.dob.value;
+            const doj = employeeForm.doj.value;
+
+            const employeeData = {
+                id: empId,
+                employeeId: empId,
+                nic: nic,
+                firstName: firstName,
+                lastName: lastName,
+                dob: dob,
+                doj: doj
+            };
+
+            if (editingEmployeeId) {
+
+                await fetch(`${apiUrl}/${editingEmployeeId}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(employeeData)
+                });
+            } else {
+
+                await fetch(apiUrl, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(employeeData)
+                });
+
+                const userData = {
+                    id: empId,
+                    employeeId: empId,
+                    username: empId,
+                    password: "pwd123",
+                    role: "Employee"
+                };
+                await fetch(userApiUrl, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(userData)
+                });
+            }
+            employeeModal.style.display = "none";
+            await fetchEmployees();
+            await fetchUsers();
+        };
+
+        window.deleteEmployee = async (empId) => {
+            if (confirm("Are you sure you want to delete this employee?")) {
+                await fetch(`${apiUrl}/${empId}`, {
+                    method: "DELETE"
+                });
+                await fetch(`${userApiUrl}/${empId}`, {
+                    method: "DELETE"
+                });
+                showToast("Deleted Successfully");
+                await fetchEmployees();
+            }
+        };
+
+        window.editEmployee = (empId) => {
+            const employee = employees.find(emp => emp.employeeId === empId);
+            openEmployeeModal(employee);
+        };
+
+        window.editCredentials = (empId) => {
+            const user = users.find(usr => usr.employeeId === empId);
+            if (user) {
+                credentialsModal.style.display = "block";
+                credentialsForm.username.value = user.username;
+                credentialsForm.password.value = user.password;
+                credentialsForm.userrole.value = user.role;
+                credentialsForm.credentialsEmpId.value = user.employeeId;
+            }
+        };
+
+        credentialsForm.onsubmit = async (e) => {
+            e.preventDefault();
+            const userData = {
+                username: credentialsForm.username.value,
+                password: credentialsForm.password.value,
+                role: credentialsForm.userrole.value,
+                employeeId: credentialsForm.credentialsEmpId.value
+            };
+            const user = users.find(usr => usr.employeeId === userData.employeeId);
+            if (user) {
+                await fetch(`${userApiUrl}/${user.id}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(userData)
+                });
+            } else {
+                await fetch(userApiUrl, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(userData)
+                });
+            }
+            credentialsModal.style.display = "none";
+            await fetchUsers();
+        };
+
+        const showToast = (message) => {
+            toast.innerText = message;
+            toast.classList.add("show");
+            setTimeout(() => {
+                toast.classList.remove("show");
+            }, 3000);
+        };
+
+
+        const logoutButton = document.getElementById('logoutButton');
+        logoutButton.addEventListener('click', function () {
+            console.log("hmjg")
+            localStorage.removeItem('loggedInUser');
+            alert('You have been logged out.');
+            window.location.href = '/login';
+        });
+
+
+
+        document.getElementById("searchInput").oninput = (e) => {
+            const query = e.target.value.toLowerCase();
+            const filteredEmployees = employees.filter(emp => {
+                return emp.nic.toLowerCase().includes(query) ||
+                    emp.firstName.toLowerCase().includes(query) ||
+                    emp.lastName.toLowerCase().includes(query);
+            });
+            renderFilteredEmployees(filteredEmployees);
+        };
+        const renderFilteredEmployees = (filteredEmployees) => {
+            employeeTableBody.innerHTML = "";
+            filteredEmployees.forEach((employee) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+        <td>${employee.employeeId}</td>
+        <td>${employee.nic}</td>
+        <td>${employee.firstName}</td>
+        <td>${employee.lastName}</td>
+        <td>${employee.dob}</td>
+        <td>${employee.doj}</td>
+        <td>
+            <div id="btnDiv">
+                <div>
+                    <button id="editBtn" onclick="editEmployee('${employee.employeeId}')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                        </svg>
+                    </button>
+                    <button id="deleteBtn" onclick="deleteEmployee('${employee.employeeId}')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
+                        </svg>
+                    </button>
+                </div>
+                    
+                    <button id="editCredentialsBtn" onclick="editCredentials('${employee.employeeId}')">         
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                        </svg> 
+                        Credentials
+                    </button>
+            </div>
+        </td>`;
+                employeeTableBody.appendChild(row);
+            });
+        };
+        fetchEmployees();
+        fetchUsers();
+    });
+
+</script>

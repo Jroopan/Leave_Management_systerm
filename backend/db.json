@@ -1,0 +1,222 @@
+{
+  "employees": [
+    {
+      "id": "EMP_mIImt",
+      "employeeId": "EMP_mIImt",
+      "nic": "200354513115",
+      "firstName": "Mathu",
+      "lastName": "Shankar",
+      "dob": "2003-03-03",
+      "doj": "2024-04-03"
+    },
+    {
+      "id": "EMP_d3MnY",
+      "employeeId": "EMP_d3MnY",
+      "nic": "987654321456",
+      "firstName": "puvithan",
+      "lastName": "Jroopan",
+      "dob": "2022-02-09",
+      "doj": "2024-11-10"
+    },
+    {
+      "id": "EMP_Ss8Nx",
+      "employeeId": "EMP_Ss8Nx",
+      "nic": "851324251v",
+      "firstName": "rojan",
+      "lastName": "bala",
+      "dob": "2023-07-10",
+      "doj": "2024-11-13"
+    }
+  ],
+  "users": [
+    {
+      "username": "EMP_4SK8Q",
+      "password": "pwd123",
+      "role": "Employee",
+      "employeeId": null,
+      "id": "EMP_4SK8Q"
+    },
+    {
+      "username": "EMP_mIImt",
+      "password": "pwd123",
+      "role": "Manager",
+      "employeeId": "EMP_mIImt",
+      "id": "EMP_mIImt"
+    },
+    {
+      "username": "EMP_d3MnY",
+      "password": "pwd123",
+      "role": "Admin",
+      "employeeId": "EMP_d3MnY",
+      "id": "EMP_d3MnY"
+    },
+    {
+      "id": "EMP_Ss8Nx",
+      "employeeId": "EMP_Ss8Nx",
+      "username": "EMP_Ss8Nx",
+      "password": "pwd123",
+      "role": "Employee"
+    }
+  ],
+  "leaveRequests": [
+    {
+      "id": "a86b",
+      "reason": "party",
+      "employeeId": null,
+      "dateFrom": "2024-09-17",
+      "numOfDays": "1",
+      "applicationDate": "2024-09-06",
+      "status": "Rejected",
+      "processedDate": "2024-09-05",
+      "rejectionReason": "cant allow"
+    },
+    {
+      "id": "2ecb",
+      "employeeId": null,
+      "reason": "Sick",
+      "dateFrom": "2024-10-31",
+      "numOfDays": "3",
+      "applicationDate": "2024-10-28",
+      "status": "Approved",
+      "employee": {
+        "id": "EMP_4SK8Q",
+        "employeeId": "EMP_4SK8Q",
+        "nic": "723451278V",
+        "firstName": "Leena",
+        "lastName": "Holin",
+        "dob": "1972-12-05",
+        "doj": "2024-09-01"
+      },
+      "processedDate": "2024-10-28"
+    },
+    {
+      "id": "2c32",
+      "employeeId": null,
+      "reason": "Sick",
+      "dateFrom": "2024-10-31",
+      "numOfDays": "1",
+      "applicationDate": "2024-10-15",
+      "status": "Approved",
+      "employee": {
+        "id": "EMP_4SK8Q",
+        "employeeId": "EMP_4SK8Q",
+        "nic": "723451278V",
+        "firstName": "Leena",
+        "lastName": "Holin",
+        "dob": "1972-12-05",
+        "doj": "2024-09-01"
+      },
+      "processedDate": "2024-11-05"
+    },
+    {
+      "id": "27d9",
+      "employeeId": null,
+      "reason": "fever",
+      "dateFrom": "2024-11-13",
+      "numOfDays": "2",
+      "applicationDate": "2024-11-12",
+      "status": "Approved",
+      "processedDate": "2024-11-12"
+    },
+    {
+      "id": "f7ec",
+      "employeeId": null,
+      "reason": "holiday trip ",
+      "dateFrom": "2024-11-15",
+      "numOfDays": "3",
+      "applicationDate": "2024-11-12",
+      "status": "Rejected",
+      "employee": {
+        "id": "EMP_m059b",
+        "employeeId": "EMP_m059b",
+        "nic": "2327847437734",
+        "firstName": "jenitta",
+        "lastName": "suthakaran",
+        "dob": "2024-10-10",
+        "doj": "2024-11-12"
+      },
+      "processedDate": "2024-11-12",
+      "rejectionReason": "no trip\n"
+    },
+    {
+      "id": "6076",
+      "employeeId": null,
+      "reason": "family function",
+      "dateFrom": "2024-11-14",
+      "numOfDays": "3",
+      "applicationDate": "2024-11-12",
+      "status": "Rejected",
+      "processedDate": "2024-11-12",
+      "rejectionReason": "finish your work first"
+    },
+    {
+      "id": "fcf5",
+      "employeeId": null,
+      "reason": "family function",
+      "dateFrom": "2024-11-16",
+      "numOfDays": "3",
+      "applicationDate": "2024-11-12",
+      "status": "Approved",
+      "processedDate": "2024-11-12"
+    },
+    {
+      "id": "6650",
+      "employeeId": null,
+      "reason": "family function",
+      "dateFrom": "2024-11-19",
+      "numOfDays": "3",
+      "applicationDate": "2024-11-12",
+      "status": "Approved",
+      "processedDate": "2024-11-12"
+    },
+    {
+      "id": "793e",
+      "employeeId": null,
+      "reason": "family function",
+      "dateFrom": "2024-11-14",
+      "numOfDays": "3",
+      "applicationDate": "2024-11-12",
+      "status": "Rejected",
+      "processedDate": "2024-11-12",
+      "rejectionReason": "finish the works\n"
+    },
+    {
+      "id": "063d",
+      "employeeId": null,
+      "reason": "family function",
+      "dateFrom": "2024-11-14",
+      "numOfDays": "3",
+      "applicationDate": "2024-11-12",
+      "status": "Approved",
+      "processedDate": "2024-11-12"
+    },
+    {
+      "id": "e935",
+      "employeeId": null,
+      "reason": "family function",
+      "dateFrom": "2024-11-21",
+      "numOfDays": "3",
+      "applicationDate": "2024-11-12",
+      "status": "Approved",
+      "processedDate": "2024-11-12"
+    },
+    {
+      "id": "18bd",
+      "employeeId": null,
+      "reason": "family function",
+      "dateFrom": "2024-11-21",
+      "numOfDays": "3",
+      "applicationDate": "2024-11-12",
+      "status": "Pending"
+    },
+    {
+      "id": "0c4e",
+      "employeeId": null,
+      "reason": "fever",
+      "dateFrom": "2024-11-15",
+      "numOfDays": "4",
+      "applicationDate": "2024-11-12",
+      "status": "Pending"
+    }
+  ]
+}
