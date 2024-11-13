@@ -1,416 +1,458 @@
+<style>
+    body {
+        background-color: #e1e1e1;
+    }
 
-    <style>
-        body {
-            background-color: #e1e1e1;
+    .container {
+
+
+        /* padding: 25px; */
+        /* top: 50px; */
+
+        border-radius: 12px;
+        transition: opacity 3s ease, transform 3s ease;
+        font-size: 22px;
+    }
+
+
+
+
+    .icon {
+        text-align: center;
+        font-size: 3rem;
+        color: #ffffff;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+
+    .btn-logout {
+        padding: 5px 15px;
+        border-style: outset;
+        border-color: #c31a4d;
+        background: #da1c1c;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 20px;
+        margin-right: 100px;
+    }
+
+    .btn-logout:hover {
+        background: #ff0000;
+    }
+
+    h1 {
+        margin: 20px 0;
+        text-align: center;
+        color: rgb(255, 255, 255);
+        font-size: larger;
+        font-weight: bold;
+        font-size: 2rem;
+
+    }
+
+    .status.pending {
+        color: rgb(223, 114, 24);
+
+
+    }
+
+    .status.approved {
+        color: rgb(25, 209, 25);
+    }
+
+    .status.rejected {
+        color: red;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: whitesmoke;
+    }
+
+
+
+    input,
+    select {
+        background-color: #8f81ac;
+        width: 100%;
+        padding: 10px;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.3s;
+        color: #000000;
+
+    }
+
+    .status1 {
+        background-color: #ffffff;
+        border-style: none;
+        border-radius: 5px;
+        color: #050505;
+
+    }
+
+    #statusFilter {
+        background-color: #ffffff;
+        border-color: #4b54ff;
+        border-style: groove;
+
+    }
+
+
+    #statusFilter:hover {
+        background-color: #ffffff;
+    }
+
+    select:focus {
+        border-color: #000000;
+    }
+
+    .leave-list {
+        list-style-type: none;
+        padding: 10px;
+        margin-top: 5px;
+
+        border-radius: 20px;
+
+
+    }
+
+
+    .leave-list li {
+        background: #ffffff;
+        border: 2px solid #1f293a;
+        margin-bottom: 15px;
+        padding: 10px;
+        border-radius: 10px;
+
+    }
+
+
+
+    .btn {
+        background-color: rgb(81, 0, 255);
+        color: rgb(255, 255, 255);
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .btn-approve {
+        background-color: rgb(25, 209, 25);
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .btn-reject {
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 99px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+
+    .modal-content {
+        background-color: #475367;
+        margin-top: 125px;
+        margin-left: 700px;
+        padding: 10px;
+        border-radius: 5px;
+        width: 600px;
+        height: 400px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+
+    .modal-content h3 {
+        font-size: 24px;
+        color: #fff;
+        padding: 10px;
+        margin-top: 0;
+        text-align: center;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+
+
+    .close {
+        color: #ffffff;
+        float: right;
+        margin-top: 1px;
+        margin-right: 12px;
+        font-size: 50px;
+        font-weight: bold;
+    }
+
+    .close:hover {
+        color: #c7c1c1;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .modal-content form {
+        max-width: 600px;
+        height: 250px;
+        margin: 10px;
+        padding: 10px;
+        background-color: #c5c5c5;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        font-family: Arial, sans-serif;
+    }
+
+    .modal-content label {
+        font-weight: bold;
+        color: #000000;
+    }
+
+    .modal-content input[type="text"],
+    .modal-content input[type="date"] {
+        width: 100%;
+        padding: 8px;
+        margin-top: 2px;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        font-size: 16px;
+        background-color: #fff;
+        box-sizing: border-box;
+        font-weight: bold;
+    }
+
+    .modal-content button[type="submit"] {
+        width: 180px;
+        padding: 5px;
+        background-color: #4a90e2;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s ease;
+    }
+
+    .modal-content button[type="submit"]:hover {
+        background-color: blue;
+    }
+
+    .textbox {
+        width: auto;
+        height: auto;
+        border: none;
+        border-radius: 5px;
+    }
+
+
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+            transform: translateY(0);
         }
+    }
 
+
+    @media (max-width: 500px) {
         .container {
-           
-       
-            /* padding: 25px; */
-            /* top: 50px; */
-        
-            border-radius: 12px;
-            transition: opacity 3s ease, transform 3s ease;
-            font-size: 22px;
-          
-         
-
-        }
-
-
-
-
-        .icon {
-            text-align: center;
-            font-size: 3rem;
-            color: #ffffff;
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-
-        .btn-logout {
-            padding: 5px 15px;
-            border-style: outset;
-            border-color: #c31a4d;
-            background: #da1c1c;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 20px;
-            margin-right: 100px;
-        }
-
-        .btn-logout:hover {
-            background: #ff0000;
-        }
-
-        h1 {
-            margin: 20px 0;
-            text-align: center;
-            color: rgb(255, 255, 255);
-            font-size: larger;
-            font-weight: bold;
-            font-size: 2rem;
-
-        }
-
-        .status.pending {
-            color: rgb(223, 114, 24);
-
-
-        }
-
-        .status.approved {
-            color: rgb(25, 209, 25);
-        }
-
-        .status.rejected {
-            color: red;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: whitesmoke;
-        }
-
-
-
-        input,
-        select {
-            background-color: #8f81ac;
-            width: 100%;
             padding: 10px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            font-size: 1rem;
-            outline: none;
-            transition: border-color 0.3s;
-            color: #000000;
-
         }
-
-        .status1 {
-            background-color: #ffffff;
-            border-style: none;
-            border-radius: 5px;
-            color: #050505;
-
-        }
-
-        #statusFilter {
-            background-color: #ffffff;
-            border-color: #4b54ff;
-            border-style: groove;
-
-        }
-
-
-        #statusFilter:hover {
-            background-color: #ffffff;
-        }
-
-        select:focus {
-            border-color: #000000;
-        }
-
-        .leave-list {
-            list-style-type: none;
-            padding: 4px;
-            margin-top: 5px;
-            background-color: #1f293a;
-
-
-        }
-
-
-        .leave-list li {
-            background: #ffffff;
-            margin-bottom: 4px;
-            padding: 20px;
-            border-radius: 5px;
-
-        }
-
-
-
-        .btn {
-            background-color: rgb(81, 0, 255);
-            color: rgb(255, 255, 255);
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .btn-approve {
-            background-color: rgb(25, 209, 25);
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .btn-reject {
-            background-color: red;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            padding-top: 99px;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-
 
         .modal-content {
-            background-color: #475367;
-            margin-top: 125px;
-            margin-left: 700px;
-            padding: 10px;
-            border-radius: 5px;
-            width: 600px;
-            height: 400px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 90%;
         }
+    }
+
+    #headerInfo {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: +99999999999999;
+        background-color: #02305f;
+        width: 100%;
+        padding: 0px 20px;
+    }
+
+    #content {
+        position: sticky;
+        top: 380px;
+        margin-top: 380px;
+    }
+
+    #statusFilter {
+        width: 200px;
+    }
+
+    /* .leave-item{
+        margin-bottom: 70px;
+    } */
+    #leaveCount,#acceptedleaveCount,#rejectedleaveCount{
+        color: white;
+        font-weight: 500;
+        font-size: 20px;
+       
+    }
+    #requestCounts{
+        /* margin-bottom: -20px; */
+    }
+</style>
 
 
-        .modal-content h3 {
-            font-size: 24px;
-            color: #fff;
-            padding: 10px;
-            margin-top: 0;
-            text-align: center;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
-        }
+<div class="container">
 
-
-        .close {
-            color: #ffffff;
-            float: right;
-            margin-top: 1px;
-            margin-right: 12px;
-            font-size: 50px;
-            font-weight: bold;
-        }
-
-        .close:hover {
-            color: #c7c1c1;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .modal-content form {
-            max-width: 600px;
-            height: 250px;
-            margin: 10px;
-            padding: 10px;
-            background-color: #c5c5c5;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            font-family: Arial, sans-serif;
-        }
-
-        .modal-content label {
-            font-weight: bold;
-            color: #000000;
-        }
-
-        .modal-content input[type="text"],
-        .modal-content input[type="date"] {
-            width: 100%;
-            padding: 8px;
-            margin-top: 2px;
-            border: 2px solid #ccc;
-            border-radius: 10px;
-            font-size: 16px;
-            background-color: #fff;
-            box-sizing: border-box;
-            font-weight: bold;
-        }
-
-        .modal-content button[type="submit"] {
-            width: 180px;
-            padding: 5px;
-            background-color: #4a90e2;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: background-color 0.3s ease;
-        }
-
-        .modal-content button[type="submit"]:hover {
-            background-color: blue;
-        }
-
-        .textbox {
-            width: auto;
-            height: auto;
-            border: none;
-            border-radius: 5px;
-        }
-
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-
-        @media (max-width: 500px) {
-            .container {
-                padding: 10px;
-            }
-
-            .modal-content {
-                width: 90%;
-            }
-        }
-
-        #headerInfo {
-            position: fixed;
-            top: 0;
-            background-color: #02305f;
-            width: 100%;
-            padding: 0px 20px;
-        }
-        #content{
-            position: sticky;
-            top: 300px;
-            margin-top: 340px;
-        }
-        #statusFilter{
-            width: 200px;
-        }
-    </style>
-
-
-    <div class="container">
-
-        <div id="headerInfo">
-            <div class="header">
+    <div id="headerInfo">
+        <div class="header">
+            <div>
                 <h1 id="welcomeMessage"></h1>
-                <button id="logoutButton" class="btn-logout">Log out</button>
+                <div id="requestCounts">
+                    <p id="leaveCount"></p>
+                    <p id="acceptedleaveCount"></p>
+                    <p id="rejectedleaveCount"></p>
+                </div>
             </div>
-            <div class="icon">
-                <i class="fa fa-user-times" aria-hidden="true"></i>
-                <i class="fa fa-check-square" aria-hidden="true"></i>
-            </div>
-
-            <h1>Manage Employee Leave Requests</h1>
-
-            <label for="statusFilter">Filter by Status:</label>
-            <select id="statusFilter">
-                <option value="pending">Pending</option>
-                <option value="all">All</option>
-                <option value="approved">Approved</option>
-                <option value="rejected">Rejected</option>
-            </select>
+            <button id="logoutButton" class="btn-logout">Log out</button>
         </div>
-        <div id="content">
-            <ul id="leaveRequests" class="leave-list"></ul>
-        </div>
+        <!-- <div class="icon">
+            <i class="fa fa-user-times" aria-hidden="true"></i>
+            <i class="fa fa-check-square" aria-hidden="true"></i>
+        </div> -->
+
+        <!-- <h1>Manage Employee Leave Requests</h1> -->
+
+        <label for="statusFilter">Filter by Status:</label>
+        <select id="statusFilter">
+            <option value="pending">Pending</option>
+            <option value="all">All</option>
+            <option value="approved">Approved</option>
+            <option value="rejected">Rejected</option>
+        </select>
     </div>
-
-
-    <div id="rejectModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-
-            <h3>Reject Leave Request</h3>
-
-            <form id="rejectForm">
-                <label for="rejectionReason">Reason for Rejection</label>
-                <textarea id="rejectionReason" name="rejectionReason" class="textbox" required></textarea><br><br>
-                <button type="submit" class="btn">Submit</button>
-            </form>
-
-        </div>
+    <div id="content">
+        <ul id="leaveRequests" class="leave-list"></ul>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', async function () {
+</div>
 
 
-            const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+<div id="rejectModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
 
-            if (!loggedInUser) {
-                alert('You must log in first!');
-                window.location.href = 'login.html';
-                return;
-            }
-            if (loggedInUser.role == 'Employee') {
-                window.location.href = 'leaveRequest.html';
-            }
+        <h3>Reject Leave Request</h3>
 
-            const welcomeMessage = document.getElementById('welcomeMessage');
-            welcomeMessage.textContent = `Welcome Back, ${loggedInUser.employeeId}`;
+        <form id="rejectForm">
+            <label for="rejectionReason">Reason for Rejection</label>
+            <textarea id="rejectionReason" name="rejectionReason" class="textbox" required></textarea><br><br>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', async function () {
+        const employeeResponse = await fetch(`http://localhost:3000/employees`);
+
+        const employees = await employeeResponse.json();
 
 
-            const logoutButton = document.getElementById('logoutButton');
-            logoutButton.addEventListener('click', function () {
-                console.log("hmjg")
-                localStorage.removeItem('loggedInUser');
-                alert('You have been logged out.');
-                window.location.href = '/login';
-            });
+        const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
-            const statusFilter = document.getElementById('statusFilter');
-            const leaveRequestsList = document.getElementById('leaveRequests');
-            let leaveRequests = [];
+        if (!loggedInUser) {
+            alert('You must log in first!');
+            window.location.href = 'login.html';
+            return;
+        }
+        if (loggedInUser.role == 'Employee') {
+            window.location.href = 'leaveRequest.html';
+        }
 
-            statusFilter.addEventListener('change', function () {
+        const welcomeMessage = document.getElementById('welcomeMessage');
+        welcomeMessage.innerHTML = `Welcome Back, ${loggedInUser.firstName}  ${loggedInUser.lastName} `;
+
+
+
+        const logoutButton = document.getElementById('logoutButton');
+        logoutButton.addEventListener('click', function () {
+            console.log("hmjg")
+            localStorage.removeItem('loggedInUser');
+            alert('You have been logged out.');
+            window.location.href = '/login';
+        });
+
+        const statusFilter = document.getElementById('statusFilter');
+        const leaveRequestsList = document.getElementById('leaveRequests');
+        let leaveRequests = [];
+
+        statusFilter.addEventListener('change', function () {
+            renderLeaveRequests();
+        });
+
+        async function loadLeaveRequests() {
+            try {
+                const response = await fetch(`http://localhost:3000/leaveRequests?employeeId_ne=${loggedInUser.employeeId}&_embed=employee`);
+                leaveRequests = await response.json();
                 renderLeaveRequests();
-            });
-
-            async function loadLeaveRequests() {
-                try {
-                    const response = await fetch(`http://localhost:3000/leaveRequests?employeeId_ne=${loggedInUser.employeeId}&_embed=employee`);
-                    leaveRequests = await response.json();
-                    renderLeaveRequests();
-                } catch (error) {
-                    console.error('Error:', error);
-                }
+            } catch (error) {
+                console.error('Error:', error);
             }
+        }
 
-            function renderLeaveRequests() {
-                const status = statusFilter.value;
-                leaveRequestsList.innerHTML = '';
 
-                const filteredRequests = leaveRequests.filter(request => {
-                    return status === 'all' || request.status.toLowerCase() === status;
-                });
+        let leaveCount = document.getElementById("leaveCount");
+        let acceptedleaveCount = document.getElementById("acceptedleaveCount");
+        let rejectedleaveCount = document.getElementById("rejectedleaveCount");
 
-                filteredRequests.forEach(request => {
-                    const li = document.createElement('li');
-                    li.classList.add('leave-item');
-                    li.innerHTML = `<div class= "status1">
+        let acceptedReq = leaveRequests.filter(r => r.status == "Approved");
+        let rejectedReq = leaveRequests.filter(r => r.status == "Rejected");
+
+        leaveCount.innerHTML = `Total Request: ${leaveRequests.length}`;
+        acceptedleaveCount.innerHTML = `Approved: ${acceptedReq.length}`;
+        rejectedleaveCount.innerHTML = `Rejected: ${rejectedReq.length}`;
+        function renderLeaveRequests() {
+            const status = statusFilter.value;
+            leaveRequestsList.innerHTML = '';
+
+            const filteredRequests = status === 'all'
+                ? leaveRequests
+                : leaveRequests.filter(request => request.status.toLowerCase() === status);
+            console.log(filteredRequests)
+            filteredRequests.forEach(request => {
+                const findedEmployee = employees.find(e => e.id === request.employeeId);
+
+                const li = document.createElement('li');
+                li.classList.add('leave-item');
+                li.innerHTML = `<div class= "status1">
                
+                <div>Employee ID: ${request.employeeId}</div>
+                <div>Full Name: ${findedEmployee.firstName} ${findedEmployee.lastName}</div>
+
                 <div>Reason: ${request.reason}</div>
                 <div>From: ${request.dateFrom}</div>
                 <div>Days: ${request.numOfDays}</div>
@@ -420,83 +462,83 @@
                 <button class="btn-approve" data-id="${request.id}">Approve</button>
                 <button class="btn-reject" data-id="${request.id}">Reject</button>` : ''}</div>
             `;
-                    leaveRequestsList.appendChild(li);
-                });
-
-                document.querySelectorAll('.btn-approve').forEach(button => {
-                    button.addEventListener('click', handleApprove);
-                });
-
-                document.querySelectorAll('.btn-reject').forEach(button => {
-                    button.addEventListener('click', handleReject);
-                });
-            }
-
-            async function handleApprove(event) {
-                const requestId = event.target.dataset.id;
-                const request = leaveRequests.find(req => req.id == requestId);
-                if (request) {
-                    request.status = 'Approved';
-                    request.processedDate = new Date().toISOString().split('T')[0];
-
-                    try {
-                        await fetch(`http://localhost:3000/leaveRequests/${requestId}`, {
-                            method: 'PATCH',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(request)
-                        });
-                        loadLeaveRequests();
-                    } catch (error) {
-                        console.error('Error:', error);
-                    }
-                }
-            }
-
-            const rejectModal = document.getElementById('rejectModal');
-            const rejectForm = document.getElementById('rejectForm');
-            let requestToReject = null;
-
-            function handleReject(event) {
-                requestToReject = leaveRequests.find(req => req.id == event.target.dataset.id);
-                if (requestToReject) {
-                    rejectModal.style.display = 'block';
-                }
-            }
-
-            rejectForm.addEventListener('submit', async function (event) {
-                event.preventDefault();
-                const rejectionReason = document.getElementById('rejectionReason').value;
-
-                if (requestToReject) {
-                    requestToReject.status = 'Rejected';
-                    requestToReject.processedDate = new Date().toISOString().split('T')[0];
-                    requestToReject.rejectionReason = rejectionReason;
-
-                    try {
-                        await fetch(`http://localhost:3000/leaveRequests/${requestToReject.id}`, {
-                            method: 'PATCH',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(requestToReject)
-                        });
-                        rejectModal.style.display = 'none';
-                        loadLeaveRequests();
-                    } catch (error) {
-                        console.error('Error:', error);
-                    }
-                }
+                leaveRequestsList.appendChild(li);
             });
 
-
-            document.querySelector('.close').addEventListener('click', function () {
-                rejectModal.style.display = 'none';
+            document.querySelectorAll('.btn-approve').forEach(button => {
+                button.addEventListener('click', handleApprove);
             });
 
+            document.querySelectorAll('.btn-reject').forEach(button => {
+                button.addEventListener('click', handleReject);
+            });
+        }
 
-            loadLeaveRequests();
+        async function handleApprove(event) {
+            const requestId = event.target.dataset.id;
+            const request = leaveRequests.find(req => req.id == requestId);
+            if (request) {
+                request.status = 'Approved';
+                request.processedDate = new Date().toISOString().split('T')[0];
+
+                try {
+                    await fetch(`http://localhost:3000/leaveRequests/${requestId}`, {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(request)
+                    });
+                    loadLeaveRequests();
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            }
+        }
+
+        const rejectModal = document.getElementById('rejectModal');
+        const rejectForm = document.getElementById('rejectForm');
+        let requestToReject = null;
+
+        function handleReject(event) {
+            requestToReject = leaveRequests.find(req => req.id == event.target.dataset.id);
+            if (requestToReject) {
+                rejectModal.style.display = 'block';
+            }
+        }
+
+        rejectForm.addEventListener('submit', async function (event) {
+            event.preventDefault();
+            const rejectionReason = document.getElementById('rejectionReason').value;
+
+            if (requestToReject) {
+                requestToReject.status = 'Rejected';
+                requestToReject.processedDate = new Date().toISOString().split('T')[0];
+                requestToReject.rejectionReason = rejectionReason;
+
+                try {
+                    await fetch(`http://localhost:3000/leaveRequests/${requestToReject.id}`, {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(requestToReject)
+                    });
+                    rejectModal.style.display = 'none';
+                    loadLeaveRequests();
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            }
         });
 
-    </script>
+
+        document.querySelector('.close').addEventListener('click', function () {
+            rejectModal.style.display = 'none';
+        });
+
+
+        loadLeaveRequests();
+    });
+
+</script>

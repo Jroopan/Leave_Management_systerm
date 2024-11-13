@@ -44,6 +44,23 @@
       "lastName": "Zachariah ",
       "dob": "1993-02-14",
       "doj": "2024-11-04"
+    },
+    {
+      "id": "EMP_GbcpZ",
+      "employeeId": "EMP_GbcpZ",
+      "nic": "200000123v",
+      "firstName": "david",
+      "lastName": "miller",
+      "dob": "2000-07-13",
+      "doj": "2024-11-07"
+    },    {
+      "id": "EMP_m059b",
+      "employeeId": "EMP_m059b",
+      "nic": "200000123v",
+      "firstName": "amthu",
+      "lastName": "puvi",
+      "dob": "2000-07-13",
+      "doj": "2024-11-07"
     }
   ],
   "users": [
@@ -81,12 +98,19 @@
       "username": "EMP_eqktP",
       "password": "pwd123",
       "role": "Employee"
+    },
+    {
+      "username": "EMP_GbcpZ",
+      "password": "pwd1234",
+      "role": "Employee",
+      "employeeId": "EMP_GbcpZ",
+      "id": "EMP_GbcpZ"
     }
   ],
   "leaveRequests": [
     {
       "id": "2ecb",
-      "employeeId": null,
+      "employeeId": "EMP_4SK8Q",
       "reason": "Sick",
       "dateFrom": "2024-10-31",
       "numOfDays": "3",
@@ -221,7 +245,17 @@
       "dateFrom": "2024-11-21",
       "numOfDays": "3",
       "applicationDate": "2024-11-12",
-      "status": "Pending"
+      "status": "Approved",
+      "employee": {
+        "id": "EMP_qB9C6",
+        "employeeId": "EMP_qB9C6",
+        "nic": "851324251v",
+        "firstName": "soman",
+        "lastName": "kanthaiya",
+        "dob": "2024-10-27",
+        "doj": "2024-10-27"
+      },
+      "processedDate": "2024-11-13"
     },
     {
       "id": "0c4e",
@@ -230,9 +264,18 @@
       "dateFrom": "2024-11-15",
       "numOfDays": "4",
       "applicationDate": "2024-11-12",
-      "status": "Pending"
+      "status": "Approved",
+      "employee": {
+        "id": "EMP_qB9C6",
+        "employeeId": "EMP_qB9C6",
+        "nic": "851324251v",
+        "firstName": "soman",
+        "lastName": "kanthaiya",
+        "dob": "2024-10-27",
+        "doj": "2024-10-27"
+      },
+      "processedDate": "2024-11-13"
     },
-
     {
       "id": "43bb",
       "employeeId": "EMP_eqktP",
@@ -240,9 +283,18 @@
       "dateFrom": "2024-11-27",
       "numOfDays": "3",
       "applicationDate": "2024-11-13",
-      "status": "Pending"
+      "status": "Approved",
+      "employee": {
+        "id": "EMP_eqktP",
+        "employeeId": "EMP_eqktP",
+        "nic": "851324251v",
+        "firstName": "Jerobert",
+        "lastName": "Zachariah ",
+        "dob": "1993-02-14",
+        "doj": "2024-11-04"
+      },
+      "processedDate": "2024-11-13"
     },
-   
     {
       "id": "9691",
       "employeeId": "EMP_eqktP",
@@ -261,12 +313,20 @@
       "applicationDate": "2024-11-13",
       "status": "Pending"
     },
-  
     {
       "id": "ed20",
       "employeeId": "EMP_eqktP",
       "reason": "Festival",
       "dateFrom": "2024-11-30",
+      "numOfDays": "2",
+      "applicationDate": "2024-11-13",
+      "status": "Pending"
+    },
+    {
+      "id": "84cb",
+      "employeeId": "EMP_4SK8Q",
+      "reason": "wedding",
+      "dateFrom": "2024-11-21",
       "numOfDays": "2",
       "applicationDate": "2024-11-13",
       "status": "Pending"
