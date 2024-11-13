@@ -198,9 +198,11 @@
                 const employees = await employeeResponse.json();
                 console.log(users);
                 let loggedinUser = users.find(u => u.username == userName && u.password == password);
+                console.log(loggedinUser)
 
                 if (users.length > 0) {
                     const loggedInEmployee = employees.filter(e => e.id == loggedinUser.employeeId)
+                    console.log(loggedInEmployee)
                     const employee = loggedInEmployee;
 
                     if (employee) {

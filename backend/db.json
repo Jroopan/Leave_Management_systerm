@@ -10,6 +10,15 @@
       "doj": "2024-04-03"
     },
     {
+      "id": "EMP_4SK8Q",
+      "employeeId": "EMP_4SK8Q",
+      "nic": "200354513115",
+      "firstName": "Raj",
+      "lastName": "Kamal",
+      "dob": "2003-03-03",
+      "doj": "2024-04-03"
+    },
+    {
       "id": "EMP_d3MnY",
       "employeeId": "EMP_d3MnY",
       "nic": "987654321456",
@@ -96,7 +105,7 @@
     },
     {
       "id": "2c32",
-      "employeeId": null,
+      "employeeId": "EMP_4SK8Q",
       "reason": "Sick",
       "dateFrom": "2024-10-31",
       "numOfDays": "1",
@@ -115,7 +124,7 @@
     },
     {
       "id": "27d9",
-      "employeeId": null,
+      "employeeId": "EMP_4SK8Q",
       "reason": "fever",
       "dateFrom": "2024-11-13",
       "numOfDays": "2",
@@ -125,7 +134,7 @@
     },
     {
       "id": "f7ec",
-      "employeeId": null,
+      "employeeId": "EMP_m059b",
       "reason": "holiday trip ",
       "dateFrom": "2024-11-15",
       "numOfDays": "3",
@@ -145,7 +154,7 @@
     },
     {
       "id": "6076",
-      "employeeId": null,
+      "employeeId": "EMP_m059b",
       "reason": "family function",
       "dateFrom": "2024-11-14",
       "numOfDays": "3",
@@ -156,7 +165,7 @@
     },
     {
       "id": "fcf5",
-      "employeeId": null,
+      "employeeId": "EMP_d3MnY",
       "reason": "family function",
       "dateFrom": "2024-11-16",
       "numOfDays": "3",
@@ -166,7 +175,7 @@
     },
     {
       "id": "6650",
-      "employeeId": null,
+      "employeeId": "EMP_d3MnY",
       "reason": "family function",
       "dateFrom": "2024-11-19",
       "numOfDays": "3",
@@ -176,7 +185,7 @@
     },
     {
       "id": "793e",
-      "employeeId": null,
+      "employeeId": "EMP_qB9C6",
       "reason": "family function",
       "dateFrom": "2024-11-14",
       "numOfDays": "3",
@@ -187,7 +196,7 @@
     },
     {
       "id": "063d",
-      "employeeId": null,
+      "employeeId": "EMP_qB9C6",
       "reason": "family function",
       "dateFrom": "2024-11-14",
       "numOfDays": "3",
@@ -197,7 +206,7 @@
     },
     {
       "id": "e935",
-      "employeeId": null,
+      "employeeId": "EMP_qB9C6",
       "reason": "family function",
       "dateFrom": "2024-11-21",
       "numOfDays": "3",
@@ -207,7 +216,7 @@
     },
     {
       "id": "18bd",
-      "employeeId": null,
+      "employeeId": "EMP_qB9C6",
       "reason": "family function",
       "dateFrom": "2024-11-21",
       "numOfDays": "3",
@@ -216,22 +225,14 @@
     },
     {
       "id": "0c4e",
-      "employeeId": null,
+      "employeeId": "EMP_qB9C6",
       "reason": "fever",
       "dateFrom": "2024-11-15",
       "numOfDays": "4",
       "applicationDate": "2024-11-12",
       "status": "Pending"
     },
-    {
-      "id": "818d",
-      "employeeId": "EMP_eqktP",
-      "reason": "sick",
-      "dateFrom": "2024-11-21",
-      "numOfDays": "2",
-      "applicationDate": "2024-11-13",
-      "status": "Pending"
-    },
+
     {
       "id": "43bb",
       "employeeId": "EMP_eqktP",
@@ -241,15 +242,7 @@
       "applicationDate": "2024-11-13",
       "status": "Pending"
     },
-    {
-      "id": "0f10",
-      "employeeId": "EMP_eqktP",
-      "reason": "Function",
-      "dateFrom": "2024-11-21",
-      "numOfDays": "3",
-      "applicationDate": "2024-11-13",
-      "status": "Pending"
-    },
+   
     {
       "id": "9691",
       "employeeId": "EMP_eqktP",
@@ -268,15 +261,7 @@
       "applicationDate": "2024-11-13",
       "status": "Pending"
     },
-    {
-      "id": "5e26",
-      "employeeId": "EMP_eqktP",
-      "reason": "Festival",
-      "dateFrom": "2024-11-30",
-      "numOfDays": "2",
-      "applicationDate": "2024-11-13",
-      "status": "Pending"
-    },
+  
     {
       "id": "ed20",
       "employeeId": "EMP_eqktP",
