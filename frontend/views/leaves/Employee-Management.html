@@ -623,14 +623,7 @@
         };
 
 
-        const logoutButton = document.getElementById('logoutButton');
-        logoutButton.addEventListener('click', function () {
-            console.log("hmjg")
-            localStorage.removeItem('loggedInUser');
-            alert('You have been logged out.');
-            window.location.href = '/login';
-        });
-
+   
 
 
         document.getElementById("searchInput").oninput = (e) => {

@@ -313,13 +313,17 @@
     /* .leave-item{
         margin-bottom: 70px;
     } */
-    #leaveCount,#acceptedleaveCount,#rejectedleaveCount{
+    #leaveCount,
+    #acceptedleaveCount,
+    #rejectedleaveCount,
+    #pendingleaveCount {
         color: white;
         font-weight: 500;
         font-size: 20px;
-       
+
     }
-    #requestCounts{
+
+    #requestCounts {
         /* margin-bottom: -20px; */
     }
 </style>
@@ -333,6 +337,7 @@
                 <h1 id="welcomeMessage"></h1>
                 <div id="requestCounts">
                     <p id="leaveCount"></p>
+                    <p id="pendingleaveCount"></p>
                     <p id="acceptedleaveCount"></p>
                     <p id="rejectedleaveCount"></p>
                 </div>
@@ -398,13 +403,6 @@
 
 
 
-        const logoutButton = document.getElementById('logoutButton');
-        logoutButton.addEventListener('click', function () {
-            console.log("hmjg")
-            localStorage.removeItem('loggedInUser');
-            alert('You have been logged out.');
-            window.location.href = '/login';
-        });
 
         const statusFilter = document.getElementById('statusFilter');
         const leaveRequestsList = document.getElementById('leaveRequests');
@@ -418,23 +416,32 @@
             try {
                 const response = await fetch(`http://localhost:3000/leaveRequests?employeeId_ne=${loggedInUser.employeeId}&_embed=employee`);
                 leaveRequests = await response.json();
+                console.log("fsd", leaveRequests)
+
+                let leaveCount = document.getElementById("leaveCount");
+                let acceptedleaveCount = document.getElementById("acceptedleaveCount");
+                let rejectedleaveCount = document.getElementById("rejectedleaveCount");
+                let pendingleaveCount = document.getElementById("pendingleaveCount");
+
+                let acceptedReq = leaveRequests.filter(r => r.status.toLowerCase() == "approved");
+                let rejectedReq = leaveRequests.filter(r => r.status.toLowerCase() == "rejected");
+                let pendingReq = leaveRequests.filter(r => r.status.toLowerCase() == "pending");
+
+                leaveCount.innerHTML = `Total Request: ${leaveRequests.length}`;
+                acceptedleaveCount.innerHTML = `Approved: ${acceptedReq.length}`;
+                rejectedleaveCount.innerHTML = `Rejected: ${rejectedReq.length}`;
+                pendingleaveCount.innerHTML = `pending: ${pendingReq.length}`;
+
                 renderLeaveRequests();
             } catch (error) {
                 console.error('Error:', error);
             }
         }
+        console.log("fsd", leaveRequests)
 
 
-        let leaveCount = document.getElementById("leaveCount");
-        let acceptedleaveCount = document.getElementById("acceptedleaveCount");
-        let rejectedleaveCount = document.getElementById("rejectedleaveCount");
 
-        let acceptedReq = leaveRequests.filter(r => r.status == "Approved");
-        let rejectedReq = leaveRequests.filter(r => r.status == "Rejected");
 
-        leaveCount.innerHTML = `Total Request: ${leaveRequests.length}`;
-        acceptedleaveCount.innerHTML = `Approved: ${acceptedReq.length}`;
-        rejectedleaveCount.innerHTML = `Rejected: ${rejectedReq.length}`;
         function renderLeaveRequests() {
             const status = statusFilter.value;
             leaveRequestsList.innerHTML = '';
@@ -539,6 +546,7 @@
 
 
         loadLeaveRequests();
+
     });
 
 </script>

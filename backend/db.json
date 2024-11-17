@@ -53,7 +53,8 @@
       "lastName": "miller",
       "dob": "2000-07-13",
       "doj": "2024-11-07"
-    },    {
+    },
+    {
       "id": "EMP_m059b",
       "employeeId": "EMP_m059b",
       "nic": "200000123v",
@@ -302,7 +303,17 @@
       "dateFrom": "2024-11-21",
       "numOfDays": "3",
       "applicationDate": "2024-11-13",
-      "status": "Pending"
+      "status": "Approved",
+      "employee": {
+        "id": "EMP_eqktP",
+        "employeeId": "EMP_eqktP",
+        "nic": "851324251v",
+        "firstName": "Jerobert",
+        "lastName": "Zachariah ",
+        "dob": "1993-02-14",
+        "doj": "2024-11-04"
+      },
+      "processedDate": "2024-11-17"
     },
     {
       "id": "26fb",
@@ -311,7 +322,17 @@
       "dateFrom": "2024-11-29",
       "numOfDays": "6",
       "applicationDate": "2024-11-13",
-      "status": "Pending"
+      "status": "Approved",
+      "employee": {
+        "id": "EMP_eqktP",
+        "employeeId": "EMP_eqktP",
+        "nic": "851324251v",
+        "firstName": "Jerobert",
+        "lastName": "Zachariah ",
+        "dob": "1993-02-14",
+        "doj": "2024-11-04"
+      },
+      "processedDate": "2024-11-17"
     },
     {
       "id": "ed20",
@@ -320,7 +341,17 @@
       "dateFrom": "2024-11-30",
       "numOfDays": "2",
       "applicationDate": "2024-11-13",
-      "status": "Pending"
+      "status": "Approved",
+      "employee": {
+        "id": "EMP_eqktP",
+        "employeeId": "EMP_eqktP",
+        "nic": "851324251v",
+        "firstName": "Jerobert",
+        "lastName": "Zachariah ",
+        "dob": "1993-02-14",
+        "doj": "2024-11-04"
+      },
+      "processedDate": "2024-11-17"
     },
     {
       "id": "84cb",
@@ -329,6 +360,162 @@
       "dateFrom": "2024-11-21",
       "numOfDays": "2",
       "applicationDate": "2024-11-13",
+      "status": "Approved",
+      "employee": {
+        "id": "EMP_4SK8Q",
+        "employeeId": "EMP_4SK8Q",
+        "nic": "200354513115",
+        "firstName": "Raj",
+        "lastName": "Kamal",
+        "dob": "2003-03-03",
+        "doj": "2024-04-03"
+      },
+      "processedDate": "2024-11-17"
+    },
+    {
+      "id": "b1e7",
+      "employeeId": "EMP_4SK8Q",
+      "reason": "sick",
+      "dateFrom": "2024-11-29",
+      "numOfDays": "1",
+      "applicationDate": "2024-11-17",
+      "status": "Approved",
+      "employee": {
+        "id": "EMP_4SK8Q",
+        "employeeId": "EMP_4SK8Q",
+        "nic": "200354513115",
+        "firstName": "Raj",
+        "lastName": "Kamal",
+        "dob": "2003-03-03",
+        "doj": "2024-04-03"
+      },
+      "processedDate": "2024-11-17"
+    },
+    {
+      "id": "a5b5",
+      "employeeId": "EMP_4SK8Q",
+      "reason": "sick",
+      "dateFrom": "2024-11-29",
+      "numOfDays": "1",
+      "applicationDate": "2024-11-17",
+      "status": "Approved",
+      "employee": {
+        "id": "EMP_4SK8Q",
+        "employeeId": "EMP_4SK8Q",
+        "nic": "200354513115",
+        "firstName": "Raj",
+        "lastName": "Kamal",
+        "dob": "2003-03-03",
+        "doj": "2024-04-03"
+      },
+      "processedDate": "2024-11-17"
+    },
+    {
+      "id": "c066",
+      "employeeId": "EMP_4SK8Q",
+      "reason": "holiday",
+      "dateFrom": "2024-11-21",
+      "numOfDays": "4",
+      "applicationDate": "2024-11-17",
+      "status": "Pending"
+    },
+    {
+      "id": "390b",
+      "employeeId": "EMP_4SK8Q",
+      "reason": "Function",
+      "dateFrom": "2024-11-29",
+      "numOfDays": "1",
+      "applicationDate": "2024-11-17",
+      "status": "Pending"
+    },
+    {
+      "id": "aabd",
+      "employeeId": "EMP_4SK8Q",
+      "reason": "Function",
+      "dateFrom": "2024-11-29",
+      "numOfDays": "1",
+      "applicationDate": "2024-11-17",
+      "status": "Pending"
+    },
+    {
+      "id": "effe",
+      "employeeId": "EMP_4SK8Q",
+      "reason": "sick",
+      "dateFrom": "2024-11-25",
+      "numOfDays": "1",
+      "applicationDate": "2024-11-17",
+      "status": "Pending"
+    },
+    {
+      "id": "20b7",
+      "employeeId": "EMP_4SK8Q",
+      "reason": "sick",
+      "dateFrom": "2024-11-25",
+      "numOfDays": "1",
+      "applicationDate": "2024-11-17",
+      "status": "Pending"
+    },
+    {
+      "id": "cc9e",
+      "employeeId": "EMP_4SK8Q",
+      "reason": "sick",
+      "dateFrom": "2024-11-25",
+      "numOfDays": "1",
+      "applicationDate": "2024-11-17",
+      "status": "Pending"
+    },
+    {
+      "id": "d00c",
+      "employeeId": "EMP_4SK8Q",
+      "reason": "Party",
+      "dateFrom": "2024-11-18",
+      "numOfDays": "1",
+      "applicationDate": "2024-11-17",
+      "status": "Pending"
+    },
+    {
+      "id": "491e",
+      "employeeId": "EMP_4SK8Q",
+      "reason": "Party",
+      "dateFrom": "2024-11-18",
+      "numOfDays": "1",
+      "applicationDate": "2024-11-17",
+      "status": "Pending"
+    },
+    {
+      "id": "43f4",
+      "employeeId": "EMP_4SK8Q",
+      "reason": "Party",
+      "dateFrom": "2024-11-18",
+      "numOfDays": "1",
+      "applicationDate": "2024-11-17",
+      "status": "Pending"
+    },
+    {
+      "id": "b3aa",
+      "employeeId": "EMP_4SK8Q",
+      "reason": "Party",
+      "dateFrom": "2024-11-18",
+      "numOfDays": "1",
+      "applicationDate": "2024-11-17",
+      "status": "Pending"
+    },
+    {
+      "id": "d0eb",
+      "employeeId": "EMP_eqktP",
+      "reason": "Party",
+      "dateFrom": "2024-11-20",
+      "numOfDays": "1",
+      "applicationDate": "2024-11-17T12:12:22.031Z",
+      "status": "Pending"
+    },
+    {
+      "id": "f06a",
+      "employeeId": "EMP_eqktP",
+      "reason": "sick",
+      "dateFrom": "2024-11-27",
+      "numOfDays": "6",
+      "applicationDate": "2024-11-17",
       "status": "Pending"
     }
   ]

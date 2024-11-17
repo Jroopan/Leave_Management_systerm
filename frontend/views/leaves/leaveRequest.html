@@ -177,7 +177,8 @@
 
         #leaveCount,
         #acceptedleaveCount,
-        #rejectedleaveCount {
+        #rejectedleaveCount,
+        #pendingleaveCount {
             color: rgb(255, 255, 255);
             font-weight: bold;
             font-size: 25px;
@@ -368,10 +369,10 @@
                             <label for="numOfDays">Number Of Days</label>
                             <input type="number" id="numOfDays" name="numOfDays" required>
                         </div>
-                        <div class="input-box">
+                        <!-- <div class="input-box" >
                             <label for="applicationDate">Application Date</label>
                             <input type="date" id="applicationDate" name="applicationDate" required>
-                        </div>
+                        </div> -->
                         <button type="submit" class="btn">Submit</button>
                     </form>
                 </div>
@@ -386,6 +387,7 @@
         <div class="logout-container">
             <div>
                 <p id="leaveCount"></p>
+                <p id="pendingleaveCount"></p>
                 <p id="acceptedleaveCount"></p>
                 <p id="rejectedleaveCount"></p>
 
@@ -407,6 +409,8 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', async function () {
+            const applicationDate = new Date();
+                    console.log(applicationDate)
             const LocalloggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
             const loggedInUser = LocalloggedInUser[0] || LocalloggedInUser
             const requestModal = document.getElementById("requestModal");
@@ -448,7 +452,8 @@
                     const reason = document.getElementById('reason').value;
                     const dateFrom = document.getElementById('dateFrom').value;
                     const numOfDays = document.getElementById('numOfDays').value;
-                    const applicationDate = document.getElementById('applicationDate').value;
+                    const applicationDate = new Date().toISOString().split("T")[0];
+                    console.log(applicationDate)
 
 
                     if (new Date(applicationDate) >= new Date(dateFrom)) {
@@ -497,15 +502,18 @@
                     let leaveCount = document.getElementById("leaveCount");
                     let acceptedleaveCount = document.getElementById("acceptedleaveCount");
                     let rejectedleaveCount = document.getElementById("rejectedleaveCount");
+                    let pendingleaveCount = document.getElementById("pendingleaveCount");
 
                   
                     let loggedInUserLeaves = leaveRequests.filter(r => r.employeeId == loggedInUser.id);
-                    let acceptedReq = loggedInUserLeaves.filter(r => r.status == "Approved");
-                    let rejectedReq = loggedInUserLeaves.filter(r => r.status == "Rejected");
+                    let acceptedReq = loggedInUserLeaves.filter(r => r.status.toLowerCase() == "approved");
+                    let rejectedReq = loggedInUserLeaves.filter(r => r.status.toLowerCase() == "rejected");
+                    let pendingReq = loggedInUserLeaves.filter(r => r.status.toLowerCase() == "pending");
 
                     leaveCount.innerHTML = `Total Request: ${loggedInUserLeaves.length}`;
                     acceptedleaveCount.innerHTML = `Approved: ${acceptedReq.length}`;
                     rejectedleaveCount.innerHTML = `Rejected: ${rejectedReq.length}`;
+                    pendingleaveCount.innerHTML = `pending: ${pendingReq.length}`;
 
                     leaveRequestsList.innerHTML = '';
                     const leaveList = document.querySelector('.leave-list');
