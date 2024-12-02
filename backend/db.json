@@ -62,6 +62,15 @@
       "lastName": "puvi",
       "dob": "2000-07-13",
       "doj": "2024-11-07"
+    },
+    {
+      "id": "EMP_yRmjw",
+      "employeeId": "EMP_yRmjw",
+      "nic": "123123123123",
+      "firstName": "kopal",
+      "lastName": "viji",
+      "dob": "1985-02-12",
+      "doj": "2024-12-01"
     }
   ],
   "users": [
@@ -106,6 +115,13 @@
       "role": "Employee",
       "employeeId": "EMP_GbcpZ",
       "id": "EMP_GbcpZ"
+    },
+    {
+      "id": "EMP_yRmjw",
+      "employeeId": "EMP_yRmjw",
+      "username": "EMP_yRmjw",
+      "password": "pwd123",
+      "role": "Employee"
     }
   ],
   "leaveRequests": [
@@ -516,6 +532,15 @@
       "dateFrom": "2024-11-27",
       "numOfDays": "6",
       "applicationDate": "2024-11-17",
+      "status": "Pending"
+    },
+    {
+      "id": "d235",
+      "employeeId": "EMP_yRmjw",
+      "reason": "sick",
+      "dateFrom": "2024-12-10",
+      "numOfDays": "2",
+      "applicationDate": "2024-12-02",
       "status": "Pending"
     }
   ]
